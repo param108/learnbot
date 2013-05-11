@@ -17,6 +17,8 @@ LEFT     left
 TURN     turn
 FI       fi
 PUNCT    [:ispunct:]
+ADVANCE  advance
+EQCHK    "=="
 %%
 
 [\t\n ]   {;}
@@ -35,6 +37,12 @@ TURN      {return TURN;}
 [-]            {return MINUS;}
 [*]            {return INTO;}
 END           {return END;}
+{ADVANCE}     {return ADVANCE;}
+[<]           {return LT;}
+[>]           {return GT;}
+or            {return OR;}
+and           {return AND;}
+{EQCHK}     {return EQC;}
 %%
 
 

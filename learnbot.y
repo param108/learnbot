@@ -21,9 +21,16 @@
 %token   PLUS 12
 %token   MINUS 13
 %token   INTO 14
+%token   ADVANCE 15
+%token   LT 16
+%token   GT 17
+%token   OR 18
+%token   AND 19
+%token   EQC 20
 %{
   #define YYDEBUG 1
   #include "bot.h"
+  #include "hashmap.h"
   
   void yyerror (char *s)
   {
