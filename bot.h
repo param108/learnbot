@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <hashmap.h>
 
 extern int varmap[100];
 

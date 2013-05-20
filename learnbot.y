@@ -56,11 +56,11 @@
 %type<str> PROPERTY
 
 %%
-expr: VARIABLE EQ var STMTEND { printf("setting %d\n",rt_setVarVal($1,$3));$$ = $3} |
+expr: VARIABLE EQ var STMTEND { printf("setting %d\n",rt_setVarVal($1,$3));$$ = $3;} |
 expr expr {;} |
 expr END {printf("End Of FIle reached\n");}
 
-var: NUMBER {/*printf("Got Number %d\n",$1);*/$$ = $1} | 
+var: NUMBER {/*printf("Got Number %d\n",$1);*/$$ = $1;} | 
 VARIABLE {/*printf("Got Var %d = %d\n",$1,rt_getVarVal($1));*/
   $$ = rt_getVarVal($1);} |
 var PLUS var {$$ = $1 + $3;}|

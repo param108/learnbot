@@ -20,7 +20,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <sys/types.h>
-#include "hashmap.h"
+#include <hashmap.h>
 
 Hashmap* hashmapCreate(size_t initialCapacity,
         int (*hash)(void* key), bool (*equals)(void* keyA, void* keyB)) {

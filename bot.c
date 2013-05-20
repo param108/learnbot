@@ -1,6 +1,6 @@
-#include "hashmap.h"
-#include "strhash.h"
-#include "bot.h"
+#include <hashmap.h>
+#include <strhash.h>
+#include <bot.h>
 
 bot *createBot() {
   bot *ret = (bot*)malloc(sizeof(bot));

@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <string.h>
-#include "hashmap.h"
+#include <hashmap.h>
 
 int strhash(void *key) {
   char *chkey = (char*)key;

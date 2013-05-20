@@ -1,18 +1,27 @@
-learnbot:	learnbot.tab.h learnbot.tab.c bot.h lex.yy.c hashmap.o strhash.o
-		gcc -o learnbot learnbot.tab.c lex.yy.c
+MDIR=${shell util/dirname.sh}
+CFLAGS=-I ${MDIR} -I ${MDIR}/build
 
-learnbot.tab.h learnbot.tab.c:	learnbot.y bot.h
-		bison -tdv learnbot.y
-lex.yy.c:	learnbot.lex learnbot.tab.h
-		flex learnbot.lex
-hashmap.o:	hashmap.h hashmap.c
-		gcc -c hashmap.c
-strhash.o:	strhash.h strhash.c
-		gcc -c strhash.c
-all: learnbot
+bin/learnbot:	bin build build/learnbot.tab.h build/learnbot.tab.c bot.h build/lex.yy.c build/hashmap.o build/strhash.o
+		gcc ${CFLAGS} -o bin/learnbot build/learnbot.tab.c build/lex.yy.c
+
+build/learnbot.tab.h build/learnbot.tab.c:	build learnbot.y bot.h
+		bison -tdv -o build/learnbot.tab.c learnbot.y
+build/lex.yy.c:	build learnbot.lex build/learnbot.tab.h
+		flex -o build/lex.yy.c learnbot.lex 
+build/hashmap.o:	build hashmap.h hashmap.c
+		gcc ${CFLAGS} -c hashmap.c -o build/strhash.o
+build/strhash.o:	build strhash.h strhash.c
+		gcc ${CFLAGS} -c strhash.c -o build/strhash.o
+all: bin/learnbot
+
+build:		
+		- rm -rf build
+		- mkdir build
+
+bin:
+		- rm -rf bin
+		- mkdir bin
 
 clean:
-	- rm learnbot.tab.*;
-	- rm lex.yy.c;
+	- rm -rf build
 	- rm *~;
-	- rm *.o

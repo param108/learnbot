@@ -1,6 +1,6 @@
 %{
-#include "stdlib.h"
-#include "learnbot.tab.h"
+#include <stdlib.h>
+#include <learnbot.tab.h>
 %}
 EQ       =
 STMTEND  ;
